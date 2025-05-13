@@ -4,14 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from openai import OpenAI
 import seaborn as sns
-import os
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
 
-# Get API key from environment variable
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY")
 
 # Set page config
 st.set_page_config(
@@ -77,9 +72,6 @@ with st.sidebar.expander("📝 System Message", expanded=True):
         st.session_state.system_msg = current_system_message
         st.success("System message updated!")
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("### About")
-st.sidebar.markdown("Visualizes token probabilities from OpenAI models.")
 
 # --- Main Content Area --- 
 st.title("📊 OpenAI Token Probability Visualizer")
